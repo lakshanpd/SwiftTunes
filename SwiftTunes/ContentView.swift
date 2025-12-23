@@ -1,21 +1,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var audioManager = AudioPlayerManager()
-
     var body: some View {
-        VStack(spacing: 20) {
-            Text("🎵 Simple Music Player")
-                .font(.title)
+        TabView {
+            NowPlayingView()
+                .tabItem {
+                    Label("Now Playing", systemImage: "play.circle.fill")
+                }
 
-            Button("Playy") {
-                audioManager.play(songName: "song_1")
-            }
-
-            Button("Pause") {
-                audioManager.pause()
-            }
+            LibraryView()
+                .tabItem {
+                    Label("Library", systemImage: "music.note.list")
+                }
         }
-        .padding()
     }
+}
+
+#Preview {
+    ContentView()
 }
