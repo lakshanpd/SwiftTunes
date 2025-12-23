@@ -1,24 +1,21 @@
-//
-//  ContentView.swift
-//  SwiftTunes
-//
-//  Created by Danuka Lakshan on 2025-12-23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var audioManager = AudioPlayerManager()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 20) {
+            Text("🎵 Simple Music Player")
+                .font(.title)
+
+            Button("Playy") {
+                audioManager.play(songName: "song_1")
+            }
+
+            Button("Pause") {
+                audioManager.pause()
+            }
         }
         .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
